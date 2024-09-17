@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo website</title>
+    <!-- style -->
+    <link rel="stylesheet" href="styles/style.css">
+
+    <!-- icons -->
+    <script src="https://kit.fontawesome.com/f73f73cb94.js" crossorigin="anonymous"></script>
+
+    <!-- font -->
+    <link href="https://fonts.cdnfonts.com/css/adobe-clean" rel="stylesheet">
+
+    <!-- tailwind css -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+
+</head>
+<body class="w-[90%] mx-auto py-[20px] max-sm:py-[0] text-[#67645a]">
+    
+        <!-- Modal -->
+        <div class="popup" id="popup1">
+            <div class="overlay"></div>
+            <div class="centering">
+                <div class="content">
+                    <div class="w-[850px] max-lg:w-[650px] max-md:w-[600px] max-sm:w-[320px] h-[650px] max-md:h-[670px] max-sm:h-[740px] p-[50px] rounded-[20px] shadow-xl bg-white duration-200">
+                        <div class="flex justify-between mb-[30px]">
+                            <button id="modal-cancel1" class="text-lg outline-none">Cancel</button>
+                            <button id="add-task1" class="py-[10px] px-[50px] rounded-[10px] text-lg text-[#f4f4f3] bg-[#69665c]">Add</button>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-[10px]">Title</h2>
+                        <input type="text" id="task-title1" placeholder="add a title ..." class="w-full bg-[#faf9f8] rounded-[10px] text-lg text-[#625e54] font-bold px-[10px] py-[10px] focus:outline-none">
+                      
+                        <h2 class="text-2xl font-bold mt-[30px] mb-[10px]">Description</h2>
+                        <textarea type="text" id="task-description1" placeholder="add a description ..." draggable="false" class="w-full h-[150px] bg-[#faf9f8] rounded-[10px] text-lg font-bold text-[#625e54] resize-none px-[10px] py-[10px] focus:outline-none"></textarea>
+                
+                        <h2 class="mt-[30px] mb-[10px] text-2xl font-bold">Tags</h2>
+                        <div class="add-task-tags flex gap-4">
+                            <div id='work-tag' class="modal-tags1 flex p-[10px] rounded-[10px] cursor-pointer duration-200">
+                                <div class="w-[35px] h-[35px] max-lg:w-[30] max-lg:h-[30] rounded-[17.5px] bg-[#d2ceff] mr-[10px] max-lg:mr-[5px]"></div>
+                                <h2 class="text-xl max-lg:text-lg max-md:text-base mt-[5px]">work</h2>
+                            </div>
+                
+                            <div id='study-tag' class="modal-tags1 flex p-[10px] rounded-[10px] cursor-pointer duration-200">
+                                <div class="w-[35px] h-[35px] max-lg:w-[30] max-lg:h-[30] rounded-[17.5px] bg-[#d1e5f7] mr-[10px] max-lg:mr-[5px]"></div>
+                                <h2 class="text-xl max-lg:text-lg max-md:text-base mt-[5px]">study</h2>
+                            </div>
+                
+                            <div id='entertainment-tag' class="modal-tags1 flex p-[10px] cursor-pointer rounded-[10px] duration-200">
+                                <div class="w-[35px] h-[35px] max-lg:w-[30] max-lg:h-[30] rounded-[17.5px] bg-[#ffcece] mr-[10px] max-lg:mr-[5px]"></div>
+                                <h2 class="text-xl max-lg:text-lg max-md:text-base mt-[5px]">entertainment</h2>
+                            </div>
+                
+                            <div id='family-tag' class="modal-tags1 flex p-[10px] rounded-[10px] cursor-pointer duration-200">
+                                <div class="w-[35px] h-[35px] max-lg:w-[30] max-lg:h-[30] rounded-[17.5px] bg-[#daf2d6] mr-[10px] max-lg:mr-[5px]"></div>
+                                <h2 class="text-xl max-lg:text-lg max-md:text-base mt-[5px]">family</h2>
+                            </div>    
+                        </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    
+        <!-- Edit Modal -->
+    
+        <div class="popup" id="popup2">
+            <div class="overlay"></div>
+            <div class="centering">
+                <div class="content">
+                    <div class="w-[850px] max-lg:w-[650px] max-sm:w-[320px] max-md:w-[600px] h-[650px] max-md:h-[670px] max-sm:h-[740px] p-[50px] rounded-[20px] shadow-xl bg-white duration-200">
+                        <div class="flex justify-between mb-[30px]">
+                            <button id="modal-cancel2" class="text-lg outline-none">Cancel</button>
+                            <button id="edit-task" class="py-[10px] px-[50px] rounded-[10px] text-lg text-[#f4f4f3] bg-[#69665c]">Edit</button>
+                        </div>
+                        <h2 class="text-2xl font-bold mb-[10px]">Title</h2>
+                        <input type="text" id="task-title2" placeholder="add a title ..." class="w-full bg-[#faf9f8] rounded-[10px] text-lg text-[#625e54] font-bold px-[10px] py-[10px] focus:outline-none">
+                        
+                        <h2 class="text-2xl font-bold mt-[30px] mb-[10px]">Description</h2>
+                        <textarea type="text" id="task-description2" placeholder="add a description ..." draggable="false" class="w-full h-[150px] bg-[#faf9f8] rounded-[10px] text-lg font-bold text-[#625e54] resize-none px-[10px] py-[10px] focus:outline-none"></textarea>
+                
+                        <h2 class="mt-[30px] mb-[10px] text-2xl font-bold">Tags</h2>
+                        <div class="add-task-tags flex max-md:flex-wrap gap-4">
+                            <div id='edit-work-tag' class="modal-tags2 flex p-[10px] cursor-pointer rounded-[10px] duration-200" name="work">
+                                <div class="w-[35px] h-[35px] max-lg:w-[30] max-lg:h-[30] rounded-[17.5px] bg-[#d2ceff] mr-[10px] max-lg:mr-[5px]"></div>
+                                <h2 class="text-xl max-lg:text-lg max-md:text-base mt-[5px]">work</h2>
+                            </div>
+                
+                            <div id='edit-study-tag' class="modal-tags2 flex p-[10px] cursor-pointer rounded-[10px] duration-200" name="study">
+                                <div class="w-[35px] h-[35px] max-lg:w-[30] max-lg:h-[30] rounded-[17.5px] bg-[#d1e5f7] mr-[10px] max-lg:mr-[5px]"></div>
+                                <h2 class="text-xl max-lg:text-lg max-md:text-base mt-[5px]">study</h2>
+                            </div>
+                
+                            <div id='edit-entertainment-tag' class="modal-tags2 flex p-[10px] cursor-pointer rounded-[10px] duration-200" name="entertainment">
+                                <div class="w-[35px] h-[35px] max-lg:w-[30] max-lg:h-[30] rounded-[17.5px] bg-[#ffcece] mr-[10px] max-lg:mr-[5px]"></div>
+                                <h2 class="text-xl max-lg:text-lg max-md:text-base mt-[5px]">entertainment</h2>
+                            </div>
+                
+                            <div id='edit-family-tag' class="modal-tags2 flex p-[10px] cursor-pointer rounded-[10px] duration-200" name="family">
+                                <div class="w-[35px] h-[35px] max-lg:w-[30] max-lg:h-[30] rounded-[17.5px] bg-[#daf2d6] mr-[10px] max-lg:mr-[5px]"></div>
+                                <h2 class="text-xl max-lg:text-lg max-md:text-base mt-[5px]">family</h2>
+                            </div>    
+                        </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    
+
+    <!-- navbar -->
+    
+    <header>
+        <nav class="flex justify-between pt-[20px]">
+            <h2 class="text-[48px] font-bold">todo</h2>
+            <i id="open-add-modal" class="fa-solid fa-plus text-[#67645a] text-[32px] mt-[25px] cursor-pointer" onclick="togglePopup('1')"></i>
+        </nav>
+    </header>
+    
+    <!-- todo list -->
+
+    <main>
+
+        <!-- 1st Side -->
+         
+        <div id="todo-section" class="pt-[70px] pb-[30px] flex flex-grow gap-16 max-md:flex-col max-md:gap-8 ">
+            <div id="sidebar" class="flex flex-col justify-between">
+                <div id="side-buttons" class="max-md:flex max-md:gap-3 max-md:justify-between">
+                    <div id="side-work-tag" name="work" class="buttons-filter flex mb-[20px] p-[10px] rounded-[10px] cursor-pointer duration-200">
+                        <div class="w-[35px] h-[35px] max-lg:w-[30] max-lg:h-[30] rounded-[17.5px] bg-[#d2ceff] mr-[10px] max-lg:mr-[5px]"></div>
+                        <h2 class="text-xl mt-[5px] max-md:text-sm">work</h2>
+                    </div>
+                    
+                    <div id="side-entertainment-tag" name="entertainment" class="buttons-filter flex mb-[20px] p-[10px] rounded-[10px] cursor-pointer duration-200">
+                        <div class="w-[35px] h-[35px] max-lg:w-[30] max-lg:h-[30] rounded-[17.5px] bg-[#ffcece] mr-[10px] max-lg:mr-[5px]"></div>
+                        <h2 class="text-xl mt-[5px] max-md:text-sm">entertainment</h2>
+                    </div>
+
+                    <div id="side-study-tag" name="study" class="buttons-filter flex mb-[20px] p-[10px] rounded-[10px] cursor-pointer duration-200">
+                        <div class="w-[35px] h-[35px] max-lg:w-[30] max-lg:h-[30] rounded-[17.5px] bg-[#d1e5f7] mr-[10px] max-lg:mr-[5px]"></div>
+                        <h2 class="text-xl mt-[5px] max-md:text-sm">study</h2>
+                    </div>
+    
+                    <div id="side-family-tag" name="family" class="buttons-filter flex mb-[40px] max-md:mb-[20px] p-[10px] rounded-[10px] cursor-pointer duration-200">
+                        <div class="w-[35px] h-[35px] max-lg:w-[30] max-lg:h-[30] rounded-[17.5px] bg-[#daf2d6] mr-[10px] max-lg:mr-[5px]"></div>
+                        <h2 class="text-xl mt-[5px] max-md:text-sm">family</h2>
+                    </div>
+    
+                    <div id="done-checkbox" class="done-checkbox flex max-md:mt-[18px] relative max-sm:hidden">
+                        <input type="checkbox" id="done" class="buttons-filter w-[20px] h-[20px] max-md:w-[15px] max-md:h-[15px] max-md:rounded-[5px] rounded-[7px] border-solid border-[2px] align-middle ml-[10px] border-[#bdbaaf] duration-200">
+                        <div class="checkmark"></div>
+                        <h2 class="ml-[10px] mt-[-4px] text-xl duration-200 max-md:text-sm">Hide Done Tasks</h2>
+                    </div>
+                </div>
+
+                <figure>
+                    <img src="images/girl.png" class="mt-[50px] max-md:hidden">
+                </figure>
+
+            </div>
+
+            <!-- 2nd side -->
+            
+            <div id="main-todo" class="w-full">
+                <div id="todo-list">
+            </div>
+        </div>
+    </main>
+    <script src="scripts/script.js"></script>
+    
+</body>
+</html>

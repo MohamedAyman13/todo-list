@@ -1,0 +1,216 @@
+body {
+    font-family: 'Adobe Clean', sans-serif;
+}
+
+textarea {
+    resize: none;
+}
+
+.tag-active {
+    background-color: #faf9f8;
+}
+
+.popup .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.705);
+    z-index: 3;
+    display: none;
+}
+
+.centering {
+    display: flex;
+    justify-content: center;
+}
+
+.popup .content {
+    position: absolute;
+    z-index: 4;
+    box-sizing: border-box;
+    transform: scale(0);
+    transition: all 0.3s ease-in-out
+}
+
+.popup.active .overlay {
+    display: block;
+}
+
+.popup.active .content {
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+}
+
+input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    position: relative;
+    cursor: pointer;
+}
+
+input[type="checkbox"]:checked {
+    border: 2px solid #67645a;
+}
+
+div.done-checkbox h2 {
+    color: #bdbaaf;
+}
+
+div.done-checkbox h2.color-change {
+    color: #67645a;
+}
+
+input[type="checkbox"]:checked::after {
+    content: '\2714';
+    font-size: 16px;
+    font-weight: 900;
+    position: absolute;
+    color: #67645a;
+    top: -5px;
+    left: -3px;
+}
+
+#todo-list {
+    columns: 2;
+    column-gap: 20px;
+}
+
+#todo-list .todo-task {
+    width: 100%;
+    break-inside: avoid;
+    margin-bottom: 20px;
+}
+
+.task-done {
+    text-decoration: line-through;
+}
+
+.edit-box {
+    transform: scale(0);
+    transform-origin: right top;
+}
+
+.show-edit-box {
+    transform-origin: right top;
+    transform: scale(1);
+}
+
+@media (max-width: 350px) {
+    #side-buttons {
+        justify-content: start;
+    }
+}
+
+@media (max-width: 474px) {
+    #done-checkbox {
+        margin-top: 12px!important;
+    }
+}
+
+@media (max-width: 540.9px) {
+    #side-buttons {
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    div.centering > div > div {
+        width: 100vw;
+        height: 100%;
+        border-radius: 0px;
+    }
+    
+    .add-task-tags {
+        flex-direction: column;
+    }
+
+    
+    .buttons-filter {
+        margin-bottom: 0px!important;
+    }
+    
+    .buttons-filter div {
+        width: 25px;
+        height: 25px;
+        border-radius: 12.5px;
+    }
+
+    .buttons-filter h2 {
+        font-size: 0.85rem;
+        margin-top: 0px;
+    }
+
+    #done-checkbox {
+        margin-top: 0px;
+    }
+
+    input[type="checkbox"]:checked::before {
+        font-size: 10px;
+        top: -3px;
+        left: 0px;
+    }
+    
+
+    #done-checkbox h2{
+        margin-left: 5px;
+        font-size: 0.7rem;
+    }
+    
+
+    #todo-list {
+        columns: 1;
+    }
+    
+    #todo-list .todo-task {
+        width: 100%;
+        break-inside: avoid;
+        margin-bottom: 20px;
+    }
+    
+}
+
+
+@media (min-width: 541px) and (max-width: 640px) {
+    div.centering > div > div {
+        width: 100vw;
+        height: 100%;
+        border-radius: 0px;
+    }
+    
+    .add-task-tags {
+        flex-direction: column;
+    }
+
+    #side-buttons {
+        flex-wrap: wrap;
+    }
+    
+    .buttons-filter {
+        margin-bottom: 0px!important;
+    }
+
+    .buttons-filter div {
+        width: 35px;
+        height: 35px;
+        border-radius: 17.5px;
+    }
+
+    .buttons-filter h2 {
+        font-size: 0.9rem;
+        margin-top: 6px;
+    }
+
+    input[type="checkbox"]:checked::before {
+        font-size: 12px;
+        top: -5px;
+        left: -2px;
+    }   
+}
+
+@media (min-width: 768px) and (max-width: 830px) {
+    #todo-section {
+        gap: 20px
+    }
+}
