@@ -1,3 +1,5 @@
+// variables declaration
+
 let tasks = [];
 let todoSection = document.querySelector("#todo-list");
 
@@ -39,6 +41,8 @@ let taskTitle = document.querySelectorAll(".todo-task .title h2");
 let taskDescription = document.querySelectorAll(".todo-task p");
 let editMenu = document.querySelectorAll(".edit-box");
 
+// getting local storage data
+
 if (localStorage.getItem("tasks")) {
   let task = JSON.parse(localStorage.getItem("tasks"));
   tasks = [...task];
@@ -46,66 +50,7 @@ if (localStorage.getItem("tasks")) {
   tasks = [];
 }
 
-// tags filter
-
-modalTags.forEach((modalTag) => {
-  modalTag.addEventListener("click", () => {
-    modalTag.classList.toggle("tag-active");
-  });
-});
-
-editModalTags.forEach((modalTag) => {
-  modalTag.addEventListener("click", () => {
-    modalTag.classList.toggle("tag-active");
-  });
-});
-
-function sideTagFilter(tagElement) {
-  let filterTasks = [];
-  if (tagElement.classList.contains("tag-active")) {
-    filterTasks = tasks.filter((task) =>
-      task.tags.includes(tagElement.getAttribute("name"))
-    );
-    todoSection.innerHTML = "";
-    createTask(filterTasks);
-  } else {
-    todoSection.innerHTML = "";
-    createTask(tasks);
-  }
-}
-
-function closeOtherTags(tagElement) {
-  tags.forEach((tag) => {
-    if (tag.classList.contains("tag-active") && tag != tagElement) {
-      if (tag == doneCheckBox && doneCheckBox.checked) {
-        doneCheckBox.checked = false;
-      }
-      tag.classList.remove("tag-active")
-    }
-  });
-  tagElement.classList.toggle("tag-active");
-}
-sideWorkTag.addEventListener("click", () => {
-  closeOtherTags(sideWorkTag);
-  sideTagFilter(sideWorkTag);
-});
-
-sideStudyTag.addEventListener("click", () => {
-  closeOtherTags(sideStudyTag,)
-  sideTagFilter(sideStudyTag);
-});
-
-sideEntertainmentTag.addEventListener("click", () => {
-  closeOtherTags(sideEntertainmentTag,)
-  sideTagFilter(sideEntertainmentTag);
-});
-
-sideFamilyTag.addEventListener("click", () => {
-  closeOtherTags(sideFamilyTag,)
-  sideTagFilter(sideFamilyTag);
-});
-
-// add task
+// adding task functionality
 function togglePopup(number) {
   let modal = document
     .querySelector(`#popup${number}`)
@@ -167,7 +112,7 @@ CancelBtn.addEventListener("click", () => {
   togglePopup("1");
 });
 
-// create Task
+// create Task function
 
 function createTask(tasks) {
   tasks.forEach((element) => {
@@ -217,7 +162,67 @@ function createTask(tasks) {
 }
 
 createTask(tasks);
-// Task Done Buttons
+
+// tags filter
+
+modalTags.forEach((modalTag) => {
+  modalTag.addEventListener("click", () => {
+    modalTag.classList.toggle("tag-active");
+  });
+});
+
+editModalTags.forEach((modalTag) => {
+  modalTag.addEventListener("click", () => {
+    modalTag.classList.toggle("tag-active");
+  });
+});
+
+function sideTagFilter(tagElement) {
+  let filterTasks = [];
+  if (tagElement.classList.contains("tag-active")) {
+    filterTasks = tasks.filter((task) =>
+      task.tags.includes(tagElement.getAttribute("name"))
+    );
+    todoSection.innerHTML = "";
+    createTask(filterTasks);
+  } else {
+    todoSection.innerHTML = "";
+    createTask(tasks);
+  }
+}
+
+function closeOtherTags(tagElement) {
+  tags.forEach((tag) => {
+    if (tag.classList.contains("tag-active") && tag != tagElement) {
+      if (tag == doneCheckBox && doneCheckBox.checked) {
+        doneCheckBox.checked = false;
+      }
+      tag.classList.remove("tag-active")
+    }
+  });
+  tagElement.classList.toggle("tag-active");
+}
+sideWorkTag.addEventListener("click", () => {
+  closeOtherTags(sideWorkTag);
+  sideTagFilter(sideWorkTag);
+});
+
+sideStudyTag.addEventListener("click", () => {
+  closeOtherTags(sideStudyTag,)
+  sideTagFilter(sideStudyTag);
+});
+
+sideEntertainmentTag.addEventListener("click", () => {
+  closeOtherTags(sideEntertainmentTag,)
+  sideTagFilter(sideEntertainmentTag);
+});
+
+sideFamilyTag.addEventListener("click", () => {
+  closeOtherTags(sideFamilyTag,)
+  sideTagFilter(sideFamilyTag);
+});
+
+// Task Done Button functionality
 function taskDone(id) {
   let input = document.querySelector(`#\\.${id} > div:nth-child(4) > div.task-done-checkbox.done-checkbox.flex.mt-\\[10px\\] > input`);
   let title = document.querySelector(`#\\.${id} > div.title.flex.justify-between.duration-200 > h2`);
@@ -236,6 +241,8 @@ function taskDone(id) {
   }
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
+// check if the task is done when page reloads
 
 function checkCheckbox() {
   tasks.forEach((element) => {
@@ -256,7 +263,7 @@ function checkCheckbox() {
 
 checkCheckbox();
 
-// Done Button Filter
+// Hide done tasks button functionality
 
 doneCheckBox.addEventListener("click", () => {
   doneCheckBoxH2.classList.toggle("color-change");

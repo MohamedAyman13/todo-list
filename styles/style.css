@@ -63,7 +63,7 @@ div.done-checkbox h2.color-change {
     color: #67645a;
 }
 
-input[type="checkbox"]:checked::after {
+input[type="checkbox"]:checked::before {
     content: '\2714';
     font-size: 16px;
     font-weight: 900;
@@ -147,7 +147,7 @@ input[type="checkbox"]:checked::after {
     }
 
     input[type="checkbox"]:checked::before {
-        font-size: 10px;
+        font-size: 12px;
         top: -3px;
         left: 0px;
     }
